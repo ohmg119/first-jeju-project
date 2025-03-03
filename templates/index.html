@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J 배터리 와트 계산기</title>
+    <style>
+        body {
+            font-family: 플라이트 산스 Bold, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 700px; /* 기존보다 더 넓게 설정 */
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .result {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .description {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+        .warning {
+            font-size: 0.9em;
+            color: red;
+            margin-top: 20px;
+            word-wrap: break-word; /* 긴 문장이 잘리지 않게 자동으로 줄 바꿈 처리 */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>J 배터리 와트 계산기</h1>
+        <form method="POST">
+            <label for="voltage">전압 (V):</label>
+            <input type="text" id="voltage" name="voltage" required><br><br>
+            <p class="description">배터리의 전압(고속/일반)을 입력하세요. 예: 5V, 3.7V 등.</p>
+            
+            <label for="current">전류 (mA):</label>
+            <input type="text" id="current" name="current" required><br><br>
+            <p class="description">밀리암페어 단위로 입력하세요. 예: 10000mA, 20000mA 등.</p>
+
+            <button type="submit">계산</button>
+        </form>
+
+        {% if result %}
+            <div class="result">{{ result }}</div>
+        {% endif %}
+        
+        <!-- 유의 사항 문구 추가 -->
+        <div class="warning">
+            * 보조배터리는 비닐팩, 절연테이프, 단자 보호캡 등으로 단락 방지 조치를 부탁드립니다.
+        </div>
+    </div>
+</body>
+</html>
